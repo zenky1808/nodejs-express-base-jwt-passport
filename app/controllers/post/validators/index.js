@@ -1,9 +1,11 @@
 const {
     validatePost,
-    validateGetPost
+    validateGetPost,
+    validateUpdatePost
 } = require('./validate')
 
 module.exports = {
     validatePost,
-    validateGetPost
+    validateGetPost,
+    validateUpdatePost
 }

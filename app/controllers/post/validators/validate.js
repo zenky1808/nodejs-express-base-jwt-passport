@@ -43,7 +43,31 @@ const validateGetPost = [
     }
 ]
 
+const validateUpdatePost = [
+    check('id')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY'),
+    check('title')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY'),
+    check('text_content')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY'),
+    (req, res, next) => {
+        validateResult(req, res, next)
+    }
+]
 module.exports = {
     validatePost,
-    validateGetPost
+    validateGetPost,
+    validateUpdatePost
 }

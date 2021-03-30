@@ -19,6 +19,12 @@ const findPostByID = (id, model) => {
                 select: 'name'
             }
         )
+        .populate(
+            {
+                path: 'category',
+                select: 'title text_content'
+            }
+        )
     })
 }
 

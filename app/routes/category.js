@@ -8,13 +8,21 @@ const requireAuth = passport.authenticate('jwt', {
 const trimRequest = require('trim-request')
 
 const {
-    validateCreateCategory
+    validateCreateCategory,
+    validateUpdateCategory,
+    validateDeleteCategory,
+    validateGetCategory
 } = require('../controllers/category/validators')
 
 const {
-    createCategory
+    createCategory,
+    updateCategory,
+    deleteCategory,
+    getCategory,
+    getCategoryByID
 } = require('../controllers/category')
 
+// Create Category
 router.post(
   '/',
   requireAuth,
@@ -23,4 +31,38 @@ router.post(
   createCategory
 )
 
+// Update Category
+router.put(
+  '/:id',
+  requireAuth,
+  trimRequest.all,
+  validateUpdateCategory,
+  updateCategory
+)
+
+// Delete Category
+router.delete(
+  '/:id',
+  requireAuth,
+  trimRequest.all,
+  validateDeleteCategory,
+  deleteCategory
+)
+
+//Get All Category
+router.get(
+  '/',
+  requireAuth,
+  trimRequest.all,
+  getCategory
+)
+
+//Get Category by ID
+router.get(
+  '/:id',
+  requireAuth,
+  trimRequest.all,
+  validateGetCategory,
+  getCategoryByID
+)
 module.exports = router

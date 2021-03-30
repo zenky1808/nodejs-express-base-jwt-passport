@@ -1,8 +1,14 @@
 const {
-    validateCreateCategory
+    validateCreateCategory,
+    validateUpdateCategory,
+    validateDeleteCategory,
+    validateGetCategory
 } = require('./validate')
 
 
 module.exports = {
-    validateCreateCategory
+    validateUpdateCategory,
+    validateCreateCategory,
+    validateDeleteCategory,
+    validateGetCategory
 }

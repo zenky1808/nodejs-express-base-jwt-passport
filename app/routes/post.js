@@ -9,14 +9,16 @@ const trimRequest = require('trim-request')
 
 const {
   validatePost,
-  validateGetPost
+  validateGetPost,
+  validateUpdatePost
 } = require('../controllers/post/validators')
 
 const {
   createPost,
   getAllPost,
   getPost,
-  deletePost
+  deletePost,
+  updatePost
 } = require('../controllers/post')
 
 router.post(
@@ -44,4 +46,12 @@ router.get(
   getPost
 )
 
+// Update Post
+router.put(
+  '/:id',
+  requireAuth,
+  trimRequest.all,
+  validateUpdatePost,
+  updatePost
+)
 module.exports = router

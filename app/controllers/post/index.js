@@ -2,12 +2,13 @@ const { createPost } = require('./createPost')
 const { getAllPost} = require('./getAllPost')
 const { deletePost} = require('./deletePost')
 const { getPost } = require('./getPost')
-
+const { updatePost } = require('./updatePost')
 
 
 module.exports = {
     createPost,
     getAllPost,
     getPost,
-    deletePost
+    deletePost,
+    updatePost
 }

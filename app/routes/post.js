@@ -10,7 +10,8 @@ const trimRequest = require('trim-request')
 const {
   validatePost,
   validateGetPost,
-  validateUpdatePost
+  validateUpdatePost,
+  validateSearchPost
 } = require('../controllers/post/validators')
 
 const {
@@ -18,7 +19,8 @@ const {
   getAllPost,
   getPost,
   deletePost,
-  updatePost
+  updatePost,
+  searchPost
 } = require('../controllers/post')
 
 router.post(
@@ -35,6 +37,15 @@ router.get(
   requireAuth,
   trimRequest.all,
   getAllPost
+)
+
+// Search Post
+router.get(
+  '/search',
+  requireAuth,
+  trimRequest.all,
+  validateSearchPost,
+  searchPost
 )
 
 // Get Post by ID
@@ -54,4 +65,15 @@ router.put(
   validateUpdatePost,
   updatePost
 )
+
+// Delete post
+router.delete(
+  '/:id',
+  requireAuth,
+  trimRequest.all,
+  validateGetPost,
+  deletePost
+)
+
+
 module.exports = router

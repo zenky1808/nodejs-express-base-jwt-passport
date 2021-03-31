@@ -66,8 +66,21 @@ const validateUpdatePost = [
         validateResult(req, res, next)
     }
 ]
+
+const validateSearchPost = [
+    check('searchWord')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY'),
+    (req, res, next) => {
+        validateResult(req, res, next)
+    }
+]
 module.exports = {
     validatePost,
     validateGetPost,
-    validateUpdatePost
+    validateUpdatePost,
+    validateSearchPost
 }

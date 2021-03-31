@@ -1,9 +1,10 @@
 const { buildErrObject } = require('../../../middleware/utils')
 
-const getAllPostFromDB = (model) => {
+const getAllPostFromDB = (model, option) => {
     return new Promise((resolve, reject) => {
-        model.find(
+        model.paginate(
             {},
+            option,
             (err, item) => {
                 if(err) {
                     return reject(buildErrObject(422, err.message))
@@ -11,12 +12,12 @@ const getAllPostFromDB = (model) => {
                 resolve(item)
             }
         )
-        .populate(
-            { 
-                path: 'author',
-                select: 'name'
-            }
-        )
+        // .populate(
+        //     { 
+        //         path: 'author',
+        //         select: 'name'
+        //     }
+        // )
         // .populate(
         //     {
         //         path: 'category',
